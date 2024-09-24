@@ -1,6 +1,6 @@
 package ekrem.spring.boot.demo.demo;
 
-public interface ICoach {
+public interface Coach {
 
     String getDailyWorkout();
 }

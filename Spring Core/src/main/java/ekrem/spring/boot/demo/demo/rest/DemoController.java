@@ -1,7 +1,7 @@
 package ekrem.spring.boot.demo.demo.rest;
 
 
-import ekrem.spring.boot.demo.demo.ICoach;
+import ekrem.spring.boot.demo.demo.Coach;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +12,9 @@ public class DemoController {
     @Value("${greeting.name}")
     private String username;
 
-    private ICoach coach;
+    private Coach coach;
 
-    public DemoController(ICoach coach) {
+    public DemoController(Coach coach) {
         this.coach = coach;
     }
     @GetMapping("/")
