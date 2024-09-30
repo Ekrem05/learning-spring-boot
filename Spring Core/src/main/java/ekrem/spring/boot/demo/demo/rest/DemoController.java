@@ -1,6 +1,7 @@
 package ekrem.spring.boot.demo.demo.rest;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import util.Coach;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class DemoController {
 
     private final Coach coach;
 
-    public DemoController(Coach coach) {
+    public DemoController(@Qualifier("boxingCoach") Coach coach) {
         this.coach = coach;
     }
     @GetMapping("/")
