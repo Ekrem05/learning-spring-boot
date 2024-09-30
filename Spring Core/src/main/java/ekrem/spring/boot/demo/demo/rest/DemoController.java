@@ -14,9 +14,12 @@ public class DemoController {
     private String username;
 
     private final Coach coach;
+    private final Coach anotherCoach;
 
-    public DemoController(@Qualifier("boxingCoach") Coach coach) {
+    public DemoController(@Qualifier("boxingCoach") Coach coach,
+                          @Qualifier("boxingCoach") Coach anotherCoach) {
         this.coach = coach;
+        this.anotherCoach = anotherCoach;
     }
     @GetMapping("/")
     public String HelloWorld() {
@@ -25,5 +28,10 @@ public class DemoController {
     @GetMapping("/workout")
     public String Workout() {
         return coach.getDailyWorkout();
+    }
+
+    @GetMapping("/check")
+    public String Check() {
+        return "Comparing coaches " + (coach==anotherCoach);
     }
 }
