@@ -1,7 +1,7 @@
 package ekrem.spring.boot.demo.demo.rest;
 
 
-import ekrem.spring.boot.demo.demo.Coach;
+import util.Coach;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +12,7 @@ public class DemoController {
     @Value("${greeting.name}")
     private String username;
 
-    private Coach coach;
+    private final Coach coach;
 
     public DemoController(Coach coach) {
         this.coach = coach;

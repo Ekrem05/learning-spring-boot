@@ -1,4 +1,4 @@
-package ekrem.spring.boot.demo.demo;
+package util;
 
 public interface Coach {
 

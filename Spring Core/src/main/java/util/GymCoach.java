@@ -1,6 +1,5 @@
-package ekrem.spring.boot.demo.demo.rest;
+package util;
 
-import ekrem.spring.boot.demo.demo.Coach;
 import org.springframework.stereotype.Component;
 
 @Component
