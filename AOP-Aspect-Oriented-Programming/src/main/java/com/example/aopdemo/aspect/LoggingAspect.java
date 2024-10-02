@@ -14,12 +14,18 @@ public class LoggingAspect {
     @Pointcut("execution(* com.example.aopdemo.dao.*.*(..))")
     private void generalPointcutLogg() {}
 
-    @Before("generalPointcutLogg()")
+    @Pointcut("execution(* com.example.aopdemo.dao.*.get*(..))")
+    private void getter() {}
+
+    @Pointcut("execution(* com.example.aopdemo.dao.*.set*(..))")
+    private void setter() {}
+
+    @Before("generalPointcutLogg() && !(getter()||setter())")
     public void basicLog() {
         System.out.println("Basic logging..");
     }
 
-    @Before("generalPointcutLogg()")
+    @Before("generalPointcutLogg() && !(getter()||setter())")
     public void logTime() {
         System.out.println(Instant.now().toString());
     }

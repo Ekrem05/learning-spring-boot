@@ -25,6 +25,11 @@ public class AopdemoApplication {
 	private void addAccount(AccountDAO accountDAO,MembershipDAO membershipDAO) {
 		membershipDAO.addMembership();
 		accountDAO.addAccount();
+
+		accountDAO.setServiceCode("4145");
+		accountDAO.getServiceCode();
+		accountDAO.setName("DBO344");
+		accountDAO.getName();
 	}
 
 }
