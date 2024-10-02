@@ -6,11 +6,12 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
+
 @Aspect
 @Component
-@Order(2)
-public class LoggingAspect {
-
+@Order(1)
+public class TimeLoggingAspect {
     @Pointcut("execution(* com.example.aopdemo.dao.*.*(..))")
     private void generalPointcutLogg() {}
 
@@ -21,8 +22,7 @@ public class LoggingAspect {
     private void setter() {}
 
     @Before("generalPointcutLogg() && !(getter()||setter())")
-    public void basicLog() {
-        System.out.println("Basic logging..");
+    public void logTime() {
+        System.out.println(Instant.now().toString());
     }
-
 }
