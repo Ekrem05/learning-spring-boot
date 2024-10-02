@@ -23,7 +23,7 @@ public class AopdemoApplication {
 	}
 
 	private void addAccount(AccountDAO accountDAO,MembershipDAO membershipDAO) {
-		membershipDAO.addAccount();
+		membershipDAO.addMembership();
 		accountDAO.addAccount();
 	}
 
