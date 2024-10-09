@@ -42,15 +42,27 @@ public class LoggingAspect {
         System.out.println();
         System.out.println("Method: "+signature);
     }
+
+
+    //Runs on successful execution
     @AfterReturning(pointcut = "execution(public * com.example.aopdemo.dao.AccountDAO.findAccount(..))",
     returning = "result")
     public void FindingAccount(JoinPoint joinPoint, Account result ) {
         System.out.println("Finding account result: "+result);
     }
 
+
+    //Runs if exception is thrown
     @AfterThrowing(pointcut = "execution(public * com.example.aopdemo.dao.AccountDAO.findAccount(..))",
     throwing = "excep")
     public void FindingAccountException(JoinPoint joinPoint, Exception excep ) {
         System.out.println("Finding account exception: "+excep.getMessage());
+    }
+
+
+    //Runs always
+    @After("execution(public * com.example.aopdemo.dao.AccountDAO.findAccount(..))")
+    public void FindingAccountLog() {
+        System.out.println("Finding Logg");
     }
 }
