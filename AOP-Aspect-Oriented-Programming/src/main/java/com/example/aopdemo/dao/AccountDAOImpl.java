@@ -37,8 +37,11 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public Account findAccount(String name) {
+    public Account findAccount(String name) throws Exception {
         Account result = new Account(12,name,300);
+        if(true){
+            throw new Exception("Test exception");
+        }
         return result;
     }
 }

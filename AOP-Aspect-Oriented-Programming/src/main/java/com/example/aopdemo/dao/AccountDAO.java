@@ -15,5 +15,5 @@ public interface AccountDAO {
 
     void removeAccount(String reason, String name,boolean remember);
 
-    Account findAccount(String name);
+    Account findAccount(String name) throws Exception;
 }

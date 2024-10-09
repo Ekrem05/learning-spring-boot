@@ -22,7 +22,7 @@ public class AopdemoApplication {
 		};
 	}
 
-	private void findAccount(AccountDAO accountDAO) {
+	private void findAccount(AccountDAO accountDAO) throws Exception {
 		accountDAO.findAccount("Ivan");
 	}
 

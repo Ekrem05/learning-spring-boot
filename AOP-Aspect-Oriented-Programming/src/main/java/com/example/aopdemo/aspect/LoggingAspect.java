@@ -2,10 +2,7 @@ package com.example.aopdemo.aspect;
 
 import com.example.aopdemo.model.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -49,5 +46,11 @@ public class LoggingAspect {
     returning = "result")
     public void FindingAccount(JoinPoint joinPoint, Account result ) {
         System.out.println("Finding account result: "+result);
+    }
+
+    @AfterThrowing(pointcut = "execution(public * com.example.aopdemo.dao.AccountDAO.findAccount(..))",
+    throwing = "excep")
+    public void FindingAccountException(JoinPoint joinPoint, Exception excep ) {
+        System.out.println("Finding account exception: "+excep.getMessage());
     }
 }
