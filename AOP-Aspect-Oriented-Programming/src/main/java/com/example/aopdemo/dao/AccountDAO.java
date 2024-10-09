@@ -1,5 +1,7 @@
 package com.example.aopdemo.dao;
 
+import com.example.aopdemo.model.Account;
+
 public interface AccountDAO {
      String getName();
 
@@ -10,4 +12,8 @@ public interface AccountDAO {
      void setServiceCode(String serviceCode);
 
     void addAccount();
+
+    void removeAccount(String reason, String name,boolean remember);
+
+    Account findAccount(String name);
 }

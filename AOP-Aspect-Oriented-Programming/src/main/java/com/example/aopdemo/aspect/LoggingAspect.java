@@ -1,8 +1,12 @@
 package com.example.aopdemo.aspect;
 
+import com.example.aopdemo.model.Account;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -25,4 +29,25 @@ public class LoggingAspect {
         System.out.println("Basic logging..");
     }
 
+    @Before("generalPointcutLogg() && !(getter()||setter())")
+    public void logSignature(JoinPoint joinPoint) {
+
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+
+        Object[] args = joinPoint.getArgs();
+
+        System.out.println("Arguments:");
+
+        for (Object arg : args) {
+            System.out.print(arg+" ");
+        }
+
+        System.out.println();
+        System.out.println("Method: "+signature);
+    }
+    @AfterReturning(pointcut = "execution(public * com.example.aopdemo.dao.AccountDAO.findAccount(..))",
+    returning = "result")
+    public void FindingAccount(JoinPoint joinPoint, Account result ) {
+        System.out.println("Finding account result: "+result);
+    }
 }
